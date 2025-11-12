@@ -3,17 +3,22 @@ import requests
 import os
 from datetime import datetime
 import time
+from dotenv import load_dotenv
+
+load_dotenv()
 
 API_URL = "https://brasil.io/api/v1/dataset/gastos-diretos/gastos/data"
 
 RAW_PATH = "dataset/raw"
+
+token = os.getenv("API_TOKEN")
 
 os.makedirs(RAW_PATH, exist_ok=True)
 
 def get_data():
 
     headers = {
-    "Authorization": "Token 1705c07327a9f4e1d73d5bf2d02c75afc422e1ec"
+    "Authorization": f"Token {token}"
     }
     page = 1
     total_data = []
